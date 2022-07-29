@@ -1,5 +1,5 @@
 # Server Side Routing Module Project
-test
+
 ## Introduction
 
 Use `Node.js` and `Express` to build an API that performs _CRUD_ operations on `blog posts`.
