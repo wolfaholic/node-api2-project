@@ -36,9 +36,16 @@ router.get('/:id', async (req, res) => {
         })
     }
 })
-// router.post('/', (req, res) => {
-
-// })
+router.post('/', (req, res) => {
+    const { title, contents } = req.body
+    if (!title || !contents) {
+        res.status(400).json({
+            message: "Please provide title and contents for the post" 
+        })
+    } else {
+        
+    }
+})
 // router.delete('/:id', (req, res) => {
 
 // })
