@@ -1,9 +1,8 @@
 // implement your posts router here
 const express = require ('express')
-const { restart } = require('nodemon')
 const Post = require ('./posts-model')
-const router = express.Router()
 
+const router = express.Router()
 
 
 router.get('/', (req, res) => {
@@ -60,9 +59,25 @@ router.post('/', (req, res) => {
             })
     }
 })
-// router.delete('/:id', (req, res) => {
-
-// })
+router.delete('/:id', async (req, res) => {
+    try {
+        const noPost = await Post.findById(req.params.id)
+        if(!noPost) {
+            res.status(404).json({
+                message: "The post with the specified ID does not exist"
+            })
+        } else {
+            await Post.remove(req.params.id)
+            res.json(noPost)
+        }
+    } catch (err){
+        res.status(500).json({
+            message: "The post could not be removed",
+            err: err.message,
+            stack: err.stack,
+        })
+    }
+})
 // router.put('/:id', (req, res) => {
 
 // })
