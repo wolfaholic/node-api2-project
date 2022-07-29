@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
                 return Post.findById(id)
             })
             .then(post => {
-                restart.status(201).json(post)
+                res.status(201).json(post)
             })
             .catch(err => {
                 res.status(500).json({
